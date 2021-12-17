@@ -1,0 +1,437 @@
+
+<!-- saved from url=(0086)http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Capítulo 5: Eventos en JavaScript</title>
+
+<meta name="AUTHOR" content="Iván Nieto Pérez">
+<meta name="description" content="Tutorial de JavaScript">
+<meta name="keywords" content="JavaScript, tutoriales, cursos, eventos, events, capturas, formularios, onload, onunload">
+<script language="javascript" src="./Capítulo 5_ Eventos en JavaScript_files/guia.js.descarga"></script>
+</head>
+
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" background="./Capítulo 5_ Eventos en JavaScript_files/fondo.gif">
+<table border="0" width="100%" cellspacing="0" cellpadding="2">
+  <tbody><tr>
+    <td width="80%" valign="top">
+    <table border="0" width="100%" cellspacing="0" cellpadding="20">
+      <tbody><tr>
+        <td width="100%"><h1>Capítulo 5: Eventos en JavaScript</h1>
+        <ol>
+          <li><a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript5.html#punto1" target="_self">Eventos en JavaScript</a></li>
+          <li><a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript5.html#punto2" target="_self">Métodos de evento disponibles en JavaScript</a></li>
+          <li><a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript5.html#punto3" target="_self">Eventos <em>onLoad</em> y <em>onUnload</em></a></li>
+          <li><a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript5.html#punto4" target="_self">Ejemplo de aplicación en formularios</a></li>
+        </ol>
+        <p>&nbsp;</p>
+        <h1>1. <a name="punto1">Eventos en JavaScript</a></h1>
+        <p>En JavaScript, la interacción con el usuario se consigue mediante la captura de los
+        eventos que éste produce. Un evento es una acción del usuario ante la cual puede
+        realizarse algún proceso (por ejemplo, el cambio del valor de un formulario, o la
+        pulsación de un enlace).</p>
+        <p>Los eventos se capturan mediante los manejadores de eventos. El proceso a realizar se
+        programa mediante funciones JavaScript llamadas por los manejadores de eventos.</p>
+        <p>La siguiente tabla muestra los manejadores de eventos que pueden utilizarse en
+        JavaScript, la versión a partir de la cual están soportados y su significado.</p>
+        <div align="center"><center><table border="0" width="92%" cellpadding="5">
+          <tbody><tr>
+            <td width="35%" class="fila1" id="centrado">Manejador</td>
+            <td width="28%" class="fila1" id="centrado">Versión</td>
+            <td width="107%" class="fila1" id="centrado">Se produce cuando...</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onAbort</em></td>
+            <td width="28%" class="fila">1.1</td>
+            <td width="107%" class="fila">El usuario interrumpe la carga de una imagen</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onBlur</em></td>
+            <td width="28%" class="fila">1.0</td>
+            <td width="107%" class="fila">Un elemento de formulario, una ventana o un
+            marco pierden el foco</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onChange</em></td>
+            <td width="28%" class="fila">1.0 (1.1 para <em>FileUpload</em>)</td>
+            <td width="107%" class="fila">El valor de un campo de formulario cambia</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onClick</em></td>
+            <td width="28%" class="fila">1.0</td>
+            <td width="107%" class="fila">Se hace <em>click</em> en un objeto o formulario</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onDblClick</em></td>
+            <td width="28%" class="fila">1.2 (no en Mac)</td>
+            <td width="107%" class="fila">Se hace <em>click</em> doble en un objeto o
+            formulario</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onDragDrop</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario arrastra y suelta un objeto en la
+            ventana</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onError</em></td>
+            <td width="28%" class="fila">1.1</td>
+            <td width="107%" class="fila">La carga de un documento o imagen produce un
+            error</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onFocus</em></td>
+            <td width="28%" class="fila">1.1 (1.2 para <em>Layer</em>)</td>
+            <td width="107%" class="fila">Una ventana, marco o elemento de formulario
+            recibe el foco</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onKeyDown</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario pulsa una tecla</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onKeyPress</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario mantiene pulsada una tecla</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onKeyUp</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario libera una tecla</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onLoad</em></td>
+            <td width="28%" class="fila">1.0 (1.1 para <em>image</em>)</td>
+            <td width="107%" class="fila">El navegador termina la carga de una ventana</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMouseDown</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario pulsa un botón del ratón</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMouseMove</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario mueve el puntero</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMouseOut</em></td>
+            <td width="28%" class="fila">1.1</td>
+            <td width="107%" class="fila">El puntero abando una área o enlace</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMouseOver</em></td>
+            <td width="28%" class="fila">1.0 (1.1 para <em>area</em>)</td>
+            <td width="107%" class="fila">El puntero entra en una área o imagen</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMouseUp</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">El usuario libera un botón del ratón</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onMove</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">Se mueve una ventana o un marco</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onReset</em></td>
+            <td width="28%" class="fila">1.1</td>
+            <td width="107%" class="fila">El usuario limpia un formulario</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onResize</em></td>
+            <td width="28%" class="fila">1.2</td>
+            <td width="107%" class="fila">Se cambia el tamaño de una ventana o marco</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onSelect</em></td>
+            <td width="28%" class="fila">1.0</td>
+            <td width="107%" class="fila">Se selecciona el texto del campo texto o área
+            de texto de un formulario</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onSubmit</em></td>
+            <td width="28%" class="fila">1.0</td>
+            <td width="107%" class="fila">El usuario envía un formulario</td>
+          </tr>
+          <tr>
+            <td width="35%" class="fila"><em>onUnload</em></td>
+            <td width="28%" class="fila">1.0</td>
+            <td width="107%" class="fila">El usuario abandona una página</td>
+          </tr>
+        </tbody></table>
+        </center></div><p>&nbsp;</p>
+        <p>Ejemplo de evento:</p><blockquote>
+          &lt;INPUT TYPE="text"
+            onChange="CompruebaCampo(this)"&gt;
+        </blockquote>
+        <p>En este ejemplo, <strong class="courier">CompruebaCampo()</strong> es una función
+        JavaScript definida en alguna parte del documento HTML (habitualmente en la cabecera del
+        mismo). El identificador <strong class="courier">this</strong> es una palabra propia del
+        lenguaje, y se refiere al objeto desde el cual se efectua la llamada a la función (en
+        este caso, el campo del formulario).</p>
+        <p>La siguiente tabla muestra los eventos que pueden utilizarse con los objetos del modelo
+        de objetos JavaScript del Navigator.</p>
+        <div align="center"><center><table border="0" width="92%" cellpadding="5">
+          <tbody><tr>
+            <td width="37%" class="fila1" id="centrado">Manejador de evento</td>
+            <td width="106%" class="fila1" id="centrado">Objetos para los que está definido</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onAbort</em></td>
+            <td width="106%" class="fila"><em>Image</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onBlur</em></td>
+            <td width="106%" class="fila"><em>Button, Checkbox, FileUpload, Layer,
+            Password, Radio, Reset, Select, Submit, Text, Textarea, window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onChange</em></td>
+            <td width="106%" class="fila"><em>FileUpload, Select, Text, Textarea</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onClick</em></td>
+            <td width="106%" class="fila"><em>Button, document, Checkbox, Link,
+            Radio, Reset, Submit</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onDblClick</em></td>
+            <td width="106%" class="fila"><em>document, Link</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onDragDrop</em></td>
+            <td width="106%" class="fila"><em>window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onError</em></td>
+            <td width="106%" class="fila"><em>Image, window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onFocus</em></td>
+            <td width="106%" class="fila"><em>Button, Checkbox, FileUpload, 
+            Layer, Password, Radio, Reset, Select, Submit, Text,
+            Textarea, window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onKeyDown</em></td>
+            <td width="106%" class="fila"><em>document, Image, Link, Textarea</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onKeyPress</em></td>
+            <td width="106%" class="fila"><em>document, Image, Link, Textarea</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onKeyUp</em></td>
+            <td width="106%" class="fila"><em>document, Image, Link, Textarea</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onLoad</em></td>
+            <td width="106%" class="fila"><em>Image, Layer, window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMouseDown</em></td>
+            <td width="106%" class="fila"><em>Button, document, Link</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMouseMove</em></td>
+            <td width="106%" class="fila">Ninguno (debe asociarse a uno)</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMouseOut</em></td>
+            <td width="106%" class="fila"><em>Layer, Link</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMouseOver</em></td>
+            <td width="106%" class="fila"><em>Layer, Link</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMouseUp</em></td>
+            <td width="106%" class="fila"><em>Button, document, Link</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onMove</em></td>
+            <td width="106%" class="fila"><em>window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onReset</em></td>
+            <td width="106%" class="fila"><em>Form</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onResize</em></td>
+            <td width="106%" class="fila"><em>window</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onSelect</em></td>
+            <td width="106%" class="fila"><em>Text, Textarea</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onSubmit</em></td>
+            <td width="106%" class="fila"><em>Form</em></td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>onUnload</em></td>
+            <td width="106%" class="fila"><em>window</em></td>
+          </tr>
+        </tbody></table>
+        </center></div><p>&nbsp;</p>
+        <h1>2. <a name="punto2">Métodos de evento disponibles en JavaScript</a></h1>
+        <p>Los siguientes métodos de evento pueden utilizarse en JavaScript:</p>
+        <div align="center"><center><table border="0" width="92%" cellpadding="5">
+          <tbody><tr>
+            <td width="37%" class="fila1" id="centrado">Métodos de evento</td>
+            <td width="106%" class="fila1" id="centrado">Función que realizan</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>blur()</em></td>
+            <td width="106%" class="fila">Elimina el foco del objeto desde el que se llame</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>click()</em></td>
+            <td width="106%" class="fila">Simula la realización de un <em>click</em>
+            sobre el objeto desde el que se llame</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>focus()</em></td>
+            <td width="106%" class="fila">Lleva el foco al objeto desde el que se llame</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>select()</em></td>
+            <td width="106%" class="fila">Selecciona el área de texto del campo desde el
+            que se llame</td>
+          </tr>
+          <tr>
+            <td width="37%" class="fila"><em>submit()</em></td>
+            <td width="106%" class="fila">Realiza el envío del formulario desde el que se
+            llame</td>
+          </tr>
+        </tbody></table>
+        </center></div><p>&nbsp;</p>
+        <p>Ejemplo:</p><blockquote>
+          &lt;HTML&gt;<br>
+            &lt;HEAD&gt;&lt;TITLE&gt;Eventos&lt;/TITLE&gt;<br>
+            &lt;SCRIPT&gt;<br>
+            &lt;!--<br>
+            function Reacciona(campo) { <br>
+            &nbsp;&nbsp;&nbsp; alert("¡Introduzca un valor!") <br>
+            &nbsp;&nbsp;&nbsp; campo.focus()<br>
+            }<br>
+            //--&gt; <br>
+            &lt;/SCRIPT&gt;&lt;/HEAD&gt;<br>
+            &lt;BODY&gt;
+          &lt;FORM METHOD=POST&gt;<br>
+            &lt;INPUT TYPE=text NAME=campo onFocus="Reacciona(this)"&gt;<br>
+            &lt;/FORM&gt;
+          &lt;/BODY&gt;
+          &lt;/HTML&gt;
+        </blockquote>
+        <p>&nbsp;</p>
+        <h1>3. <a name="punto3">Eventos <em>onLoad</em> y <em>onUnload</em></a></h1>
+        <p>Se usan como atributos del <em>tag</em> <strong class="courier">&lt;BODY&gt;</strong> de
+        HTML.</p>
+        <p>Ejemplo:</p><blockquote>
+          &lt;BODY onLoad="Hola()"
+            onUnload="Adios()"&gt;
+        </blockquote>
+        <p>La función <strong class="courier">Hola()</strong> se ejecutará antes de que se cargue la
+        página y la función <strong class="courier">Adios()</strong> al abandonarla.</p>
+        <p>Ejemplo:</p><blockquote>
+          &lt;HTML&gt;<br>
+            &lt;HEAD&gt;<br>
+            &lt;TITLE&gt;Ejemplo onLoad y onUnload&lt;/TITLE&gt;<br>
+            &lt;/HEAD&gt;<br>
+            &lt;BODY onLoad="alert('¡Bienvenido a mi página!')"
+            onUnload="alert('¡Vuelva pronto!')"&gt;<br>
+            ...<br>
+            &lt;/BODY&gt;<br>
+            &lt;/HTML&gt;
+        </blockquote>
+        <p>En este otro ejemplo se utilizan funciones:</p><blockquote>
+          &lt;HTML&gt;<br>
+            &lt;HEAD&gt;<br>
+            &lt;TITLE&gt;Ejemplo con funciones&lt;/TITLE&gt;<br>
+            &lt;SCRIPT LANGUAGE="JavaScript"&gt;<br>
+            &lt;!--<br>
+            var name = ""<br>
+            function Hola() {<br>
+            &nbsp;&nbsp;&nbsp; nombre = prompt('Introduzca su nombre:','')<br>
+            &nbsp;&nbsp;&nbsp; alert('¡Hola ' + nombre + '!')<br>
+            }<br>
+            <br>
+            function Adios() {<br>
+            &nbsp;&nbsp;&nbsp; alert('¡Adios ' + nombre + '!')<br>
+            }<br>
+            //--&gt;<br>
+            &lt;/SCRIPT&gt;<br>
+            &lt;/HEAD&gt;<br>
+            &lt;BODY onLoad="Hola()" onUnload="Adios()"&gt;<br>
+            ...<br>
+            &lt;/BODY&gt;<br>
+            &lt;/HTML&gt;
+        </blockquote>
+        <p>&nbsp;</p>
+        <h1>4. <a name="punto4">Ejemplo de aplicación en formularios</a></h1>
+        <p>Vamos a ver un ejemplo para un campo de texto:</p><blockquote>
+          &lt;INPUT TYPE=text NAME="test"
+            onBlur="alert('¡Gracias!')" onChange="Comprueba(this)"&gt;
+        </blockquote>
+        <p>En este ejemplo, simulamos una calculadora interactiva:</p><blockquote>
+          &lt;HTML&gt;<br>
+            &lt;HEAD&gt;&lt;TITLE&gt;Calculadora interactiva&lt;/TITLE&gt;<br>
+            &lt;SCRIPT LANGUAGE="JavaScript"&gt;<br>
+            &lt;!--<br>
+            function Calcula(form) {<br>
+            &nbsp;&nbsp;&nbsp; form.resultados.value = eval(form.entrada.value)<br>
+            }<br>
+            <br>
+            function CogeExpresion(form) {<br>
+            &nbsp;&nbsp;&nbsp; form.entrada.blur()<br>
+            &nbsp;&nbsp;&nbsp; form.entrada.value = prompt("Introduce una expresión matemática
+            válida en JavaScript","")<br>
+            &nbsp;&nbsp;&nbsp; Calcula(form)<br>
+            }
+          //--&gt;<br>
+            &lt;/SCRIPT&gt;&lt;/HEAD&gt;
+          &lt;BODY&gt;
+          &lt;FORM METHOD=POST&gt;<br>
+            Calculadora interactiva:<br>
+            &lt;INPUT TYPE=text NAME="entrada" VALUE=""
+            onFocus="CogeExpresion(this.form)"&gt;<br>
+            &lt;BR&gt;El resultado es:&lt;INPUT TYPE=text NAME="resultados"
+            VALUE="" onFocus="this.blur()"&gt;<br>
+            &lt;/FORM&gt;
+          &lt;/BODY&gt;
+          &lt;/HTML&gt;
+        </blockquote>
+        <p>&nbsp;</p>
+<script language="javascript">
+<!--
+MuestraPie('javascript6.html')
+-->
+</script><hr width="75%" color="#0000FF"><div align="center"><center><table border="0" width="65%" cellspacing="8"><tbody><tr><td width="50%" align="center"><form><p></p><p><input type="button" value=" &lt;&lt; " name="anterior" onclick="history.go(-1);">&nbsp;<input type="button" value="Inicio" name="inicio" onclick="location.href=&#39;javascript.html&#39;;">&nbsp;<input type="button" value=" &gt;&gt; " name="siguiente" onclick="location.href=&#39;javascript6.html&#39;;"></p><p></p></form></td></tr><tr><td colspan="2"><p align="center"><small>© 1999 - 2003 by Iván Nieto Pérez<br></small></p></td></tr></tbody></table></center></div>
+</td>
+      </tr>
+    </tbody></table>
+    </td>
+    <td width="20%" valign="top"><p align="center"><img src="./Capítulo 5_ Eventos en JavaScript_files/javascript.gif" width="88" height="84" alt="Tutorial de JavaScript" border="0"></p>
+    <p>
+    <script language="javascript">
+    <!--
+    MenuNavegacion2("", "javascript5.html", JS)
+    //-->
+    </script></p><p><br>Acceso rápido<br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript.html"><small>Indice</small></a><br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript1.html"><small>1. Introducción</small></a><br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript2.html"><small>2. Fundamentos de JavaScript</small></a><br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript3.html"><small>3. Trabajando con datos e información</small></a><br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript4.html"><small>4. Funciones y objetos</small></a><br><br>
+<small class="index">5. Eventos en JavaScript</small><br><br>
+<a href="http://laplace.ucv.cl/Cursos/Old/FisComputacional/javascript/Tutorial/javascript6.html"><small>6. Creación de formularios interactivos</small></a><br><br>
+</p>
+    <p></p>    
+    </td>
+  </tr>
+</tbody></table>
+
+
+</body></html>

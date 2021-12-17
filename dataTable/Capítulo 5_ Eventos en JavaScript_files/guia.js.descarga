@@ -1,0 +1,64 @@
+var JS = new Array (
+"Acceso rápido", "",
+"Indice", "javascript.html",
+"1. Introducción", "javascript1.html",
+"2. Fundamentos de JavaScript", "javascript2.html",
+"3. Trabajando con datos e información", "javascript3.html",
+"4. Funciones y objetos", "javascript4.html",
+"5. Eventos en JavaScript", "javascript5.html",
+"6. Creación de formularios interactivos", "javascript6.html"
+)
+var index = ' class="index"'
+var EstiloTitulo = ''
+var EstiloTituloOff = '<br>'
+var EstiloSuperTitulo = ''
+var EstiloSuperTituloOff = '<br>'
+var SeparadorS = '<br>'
+var SeparadorM = '<br>'
+function Enlace(ruta, item, pagina) {
+	var enlace
+	if ( pagina.indexOf(":") == -1 ) {
+		enlace = (item != pagina? '<a href="' + ruta + pagina + '">' : '')
+	} else {
+		enlace = '<a href="' + pagina + '">'
+	}
+	return enlace 
+}
+
+function EnlaceOff(item, pagina) {
+return (item != pagina? '</a>' : '')
+}
+
+function MenuNavegacion2 ( ruta, item, paginas ) {
+  numelem = paginas.length
+  document.write("<p>")
+  for ( var x = 0; x < numelem; x=x+2 ) {
+     if ( (paginas[x+1] == "") && (x == 0) ) document.write(SeparadorS + EstiloSuperTitulo + paginas[x] + EstiloSuperTituloOff + SeparadorS + '\n')
+     else if ( paginas[x+1] == "" ) document.write(SeparadorS + EstiloTitulo + paginas[x] + EstiloTituloOff + SeparadorS + '\n')
+     else if ( paginas[x] == "Inicio" ) { 
+  	document.write(Enlace(ruta, item, paginas[x+1]) + '<img src="/images/logo_small.gif" alt="El Código" border="0">' + EnlaceOff(item, paginas[x+1]) + '<br>') 
+  	//document.write('<p class="logo">El Código<br><small class="rojo">&nbsp;&nbsp;&nbsp;&nbsp;elcodigo.net&nbsp;&nbsp;</small></p>') 
+     }
+     else if ( (paginas[x+1] == "#BUSCADOR#") && (item != "index.htm") ) buscador( 11 )
+     else if ( paginas[x+1] == "#BUSCADOR#" ) {  }
+     else document.write(Enlace(ruta, item, paginas[x+1]) + '<small' + (item == paginas[x+1] ? index : '' ) + '>' + paginas[x] + '</small>' + EnlaceOff(item, paginas[x+1]) + '<br>' + SeparadorS + '\n')
+  }
+  document.write("</p>")
+}
+function MuestraPie(tipo) {
+  var pie = ''+
+//  '<p align="center">' + eval('banner' + Math.floor(Math.random(1) * numBanners)) + '</p>' +
+  '<hr width="75%" color="#0000FF">'+
+  '<div align="center"><center>'+
+  '<table border="0" width="65%" cellspacing="8">'+
+  '<tr><td width="50%" align="center"><form><p>'+
+  '<p><input type="button" value=" &lt;&lt; " name="anterior" onclick="history.go(-1);">&nbsp;'+
+  '<input type="button" value="Inicio" name="inicio" onclick="location.href=\'javascript.html'  + '\';">&nbsp;'+
+  ( (tipo != '') ? ('<input type="button" value=" &gt;&gt; " name="siguiente" onclick="location.href=\'' + tipo + '\';"></p>') : ('') ) +
+  '</p></form></td></tr>'+
+  '<tr><td colspan="2"><p align="center"><small>&copy; 1999 - 2003 by Iván Nieto Pérez<br></small></p></td></tr></table>'+
+  '</center></div>'
+  document.write(pie)
+}
+function MuestraCabecera() {
+}
